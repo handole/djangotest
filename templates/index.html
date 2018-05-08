@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+{% include 'header.html' %}
+
+{% block content %}
+<div class="container">
+	<br><br>
+	<form method="GET">
+		<div class="row">
+			<div class="col-md-9"><input type="text" name="q" placeholder="search"></div>
+			<div class="col-md-3"><input type="submit" name="submit" class="btn btn-secondary" value="Search"></div>
+		</div>
+	</form><hr><br>
+	{% for p in pos %}
+	<div class="col-md-9">
+		<img class="img-responsive" src="{% if p.image %}{{ p.image.url }}{% else %}{% static 'img/img1.jpg' %}{% endif %}" alt="" height="200px">
+		<h3><a href="{{ p.slug }}">{{p.title}}</a><small style="font-size:15px;"> posted by {{p.created_by}}, {{p.created|timesince}} ago</small></h3>
+		<p>{{p.content|safe}}</p>
+	</div><br>
+	{% endfor %}
+</div>
+{% endblock %}
+
+{% include 'footer.html' %}
+{% endblock body %}

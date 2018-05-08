@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+ 
+{% block content %}<br>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Sign up</h3><hr>
+          <form method="post" novalidate>{% csrf_token %}
+            <label for="id_username">Username</label>
+            <input type="text" name="username" style="margin-bottom:20px;">
+            <label for="id_email">E-Mail</label>
+            <input type="text" name="email" style="margin-bottom:20px;">
+            <label for="id_password">Password</label>
+            <input type="password" name="password1" style="margin-bottom:20px;">
+            <span class="helptext">
+            <ul style="margin-bottom:20px; font-size: 12px; font-style:italic; !important">
+            	<li>Your password can't be too similar to your other personal information.</li>
+            	<li>Your password must contain at least 8 characters.</li>
+            	<li>Your password can't be a commonly used password.</li>
+            	<li>Your password can't be entirely numeric.</li>
+            </ul>
+            </span>
+
+            <label for="id_password2">Password Confirmation</label>
+            <input type="password" name="password2">
+            <span class="helptext" style="font-size:12px; font-style:italic; !important">Enter the same password as before, for verification.</span>
+            <hr>
+            <button type="submit" class="btn btn-primary btn-block">Create an account</button>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center">
+          Already have an account? <a href="{% url 'login' %}">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

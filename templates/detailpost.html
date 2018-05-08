@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% include 'header.html' %}
+	{% block content %}
+		<div class="container">
+			<h3>{{instance.title}}</h3> <small> posted by{{instance.created_by}}, {{instance.created|timesince}} ago</small>
+			<hr>
+			<p>{{instance.content}}</p>
+		</div>
+	{% endblock content %}
+{% include 'footer.html' %}
+{% endblock body %}
