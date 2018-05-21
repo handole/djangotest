@@ -16,6 +16,7 @@ def isiprofil(request):
     if request.method == 'POST':
         form = ProfilForm(request.POST)
         if form.is_valid():
+            username = request.user
             isi = form.save(commit=False)
             isi.save()
 

@@ -29,7 +29,7 @@ class SignUpForm (UserCreationForm):
         if email_qs.exists ():
             raise forms.ValidationError ("This email has already been registered")
 
-        return super (UserRegisterForm, self).clean (*args, **kwargs)
+        return super (SignUpForm, self).clean (*args, **kwargs)
 
     def clean_password2(self):
         password1 = self.cleaned_data.get ('password1')
@@ -54,13 +54,13 @@ class UserLoginForm (forms.Form):
                 raise forms.ValidationError ("Incorrect password")
             if not user.is_active:
                 raise forms.ValidationError ("This user is not longer active")
-        return super (UserLoginForm, self).clean (*args, **kwargs)
+        return super(UserLoginForm, self).clean(*args, **kwargs)
 
 
 class ProfilForm (forms.ModelForm):
     class Meta:
         model = Profil
-        field = (
+        fields = (
             'firstname',
             'lastname',
             'username',
